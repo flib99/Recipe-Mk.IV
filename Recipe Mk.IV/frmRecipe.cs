@@ -26,10 +26,9 @@ namespace Recipe_Mk.IV
         private int intOutPeople;
 
         //Variables for whether or not buttons clicked
-       // bool boolBtnRecipeGoClick;
-      //  bool lootbtnGoClick;
+        bool boolBtnRecipeGoClick;
+        bool lootbtnGoClick;
 
-        //string hello;
 
 	    List<string> ingredients = new List<string>();
         List<int> amounts = new List<int>();
@@ -44,7 +43,7 @@ namespace Recipe_Mk.IV
             strRecipeName = txtName.Text;
             intPeopleNumber = Convert.ToInt32(numericUpDownPeople.Value);
 
-            //boolBtnRecipeGoClick = true;
+            boolBtnRecipeGoClick = true;
             tabControl1.SelectedIndex = 1;
 
             this.Text = strRecipeName;
@@ -63,12 +62,7 @@ namespace Recipe_Mk.IV
             numericUpDownAmount.Value = 1;
             comboBoxUnits.Text = "";
 
-            foreach (int i in amounts)
-            {
-                int h = i / intPeopleNumber;
-
-                devideAmounts.Add(h);
-            }
+            
         }
 
                   
@@ -141,8 +135,11 @@ namespace Recipe_Mk.IV
 
             if (result == DialogResult.No)
             {
+                boolBtnRecipeGoClick = false;
                 return;
             }
+
+            boolBtnRecipeGoClick = true;
 
             ingredients.Clear();
             amounts.Clear();
@@ -160,6 +157,8 @@ namespace Recipe_Mk.IV
             string[] allLines = reader.ReadToEnd().Split('\n');
 
             reader.Close();
+
+            
 
             foreach (string line in allLines)            //not working
             {
@@ -206,13 +205,7 @@ namespace Recipe_Mk.IV
             Application.Exit();
         }
 
-        private void helpStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Tough. Work it out yourself.");
-            MessageBox.Show("Google is your friend.");
-            MessageBox.Show("How do you think I found out how to do it?");
-            MessageBox.Show("Stop being lazy.");
-        }
+        
 
         private void btnOutGo_Click(object sender, EventArgs e)
         {
@@ -248,25 +241,31 @@ namespace Recipe_Mk.IV
             MessageBox.Show("Yeah, no. This bit doesn't work yet.");
         }
 
-        //private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    switch(tabControl1.SelectedIndex)
-        //    {
-        //        case 0:
-        //            break;
-        //        case 1:
-        //            break;
-        //        case 2:
-        //            foreach (int i in amounts)
-        //            {
-        //                int h = i / intPeopleNumber;
-        //
-        //                devideAmounts.Add(h);
-        //            }
-        //            break;
-        //
-        //    }
-        //}
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            foreach (int i in amounts)
+            {
+                int h = i / intPeopleNumber;
+
+                devideAmounts.Add(h);
+            }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("© Copyright Josh Walls 2013-14. All Rights Reserved.");
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Tough.");
+            MessageBox.Show("Work it out yourself.");
+            MessageBox.Show("Google is your friend.");
+            MessageBox.Show("How do you think I found out how to do it?");
+            MessageBox.Show("Stop being lazy.");
+        }
+
+        
 
             
     }

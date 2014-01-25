@@ -47,6 +47,7 @@
             this.lblPeopleNumber = new System.Windows.Forms.Label();
             this.lblRecipeName = new System.Windows.Forms.Label();
             this.tabPageIngredients = new System.Windows.Forms.TabPage();
+            this.btnNext = new System.Windows.Forms.Button();
             this.tabPageOutput = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnOutGo = new System.Windows.Forms.Button();
@@ -73,9 +74,10 @@
             this.formatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmount)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageRecipe.SuspendLayout();
@@ -96,7 +98,7 @@
             this.btnGo.Name = "btnGo";
             this.btnGo.Size = new System.Drawing.Size(75, 23);
             this.btnGo.TabIndex = 113;
-            this.btnGo.Text = "Go";
+            this.btnGo.Text = "Add";
             this.btnGo.UseVisualStyleBackColor = true;
             this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
             // 
@@ -1300,6 +1302,7 @@
             this.tabPageIngredients.AutoScroll = true;
             this.tabPageIngredients.AutoScrollMargin = new System.Drawing.Size(5, 5);
             this.tabPageIngredients.AutoScrollMinSize = new System.Drawing.Size(5, 5);
+            this.tabPageIngredients.Controls.Add(this.btnNext);
             this.tabPageIngredients.Controls.Add(this.btnGo);
             this.tabPageIngredients.Controls.Add(this.comboBoxUnits);
             this.tabPageIngredients.Controls.Add(this.numericUpDownAmount);
@@ -1313,6 +1316,16 @@
             this.tabPageIngredients.TabIndex = 1;
             this.tabPageIngredients.Text = "Ingredients";
             this.tabPageIngredients.UseVisualStyleBackColor = true;
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(173, 102);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.TabIndex = 114;
+            this.btnNext.Text = "Go";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // tabPageOutput
             // 
@@ -1567,21 +1580,29 @@
             // helpStripMenuItem1
             // 
             this.helpStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.helpStripMenuItem1.Name = "helpStripMenuItem1";
             this.helpStripMenuItem1.Size = new System.Drawing.Size(44, 20);
             this.helpStripMenuItem1.Text = "Help";
-            this.helpStripMenuItem1.Click += new System.EventHandler(this.helpStripMenuItem_Click);
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.FileName = "openFileDialog1";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // frmRecipe
             // 
@@ -1666,6 +1687,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
     }
 }
 
