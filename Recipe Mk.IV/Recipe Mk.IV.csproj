@@ -7,8 +7,8 @@
     <ProjectGuid>{5921CE4E-9426-400C-977F-FFBBEA440456}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Recipe_Mk.III</RootNamespace>
-    <AssemblyName>Recipe Mk.III</AssemblyName>
+    <RootNamespace>Recipe_Mk.IV</RootNamespace>
+    <AssemblyName>Recipe Mk.IV</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -55,7 +55,7 @@
     <ManifestCertificateThumbprint>A791FB62836FF9F85F4D79AD5B773690F10B1A60</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Recipe Mk.III_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>Recipe Mk.IV_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -105,7 +105,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Recipe Mk.III_TemporaryKey.pfx" />
+    <None Include="Recipe Mk.IV_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

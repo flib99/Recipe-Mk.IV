@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Recipe_Mk.III.Properties
+namespace Recipe_Mk.IV.Properties
 {
 
 
