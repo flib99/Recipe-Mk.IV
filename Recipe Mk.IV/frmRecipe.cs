@@ -26,18 +26,18 @@ namespace Recipe_Mk.III
         private int intOutPeople;
 
         //Variables for whether or not buttons clicked
-        // bool boolBtnRecipeGoClick;
-        //  bool lootbtnGoClick;
+       // bool boolBtnRecipeGoClick;
+      //  bool lootbtnGoClick;
 
         //string hello;
 
-        List<string> ingredients = new List<string>();
+	    List<string> ingredients = new List<string>();
         List<int> amounts = new List<int>();
         List<string> units = new List<string>();
         List<int> devideAmounts = new List<int>();
         List<string> multiplyAmounts = new List<string>();
 
-
+        
 
         private void btnRecipeGo_Click(object sender, EventArgs e)
         {
@@ -53,7 +53,7 @@ namespace Recipe_Mk.III
         }
         private void btnGo_Click(object sender, EventArgs e)
         {
-
+            
 
             ingredients.Add(txtIngredients.Text);
             amounts.Add(Convert.ToInt32(numericUpDownAmount.Value));
@@ -71,7 +71,7 @@ namespace Recipe_Mk.III
             }
         }
 
-
+                  
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -82,7 +82,7 @@ namespace Recipe_Mk.III
             {
                 StreamWriter writer = new StreamWriter(save.OpenFile());
 
-
+                
                 /*
                 writer.WriteLine("<?xml version=\"1.0\"?>");
                 writer.WriteLine("<ingredients>");
@@ -106,7 +106,7 @@ namespace Recipe_Mk.III
                 }
                 writer.WriteLine("</units>");
                 */
-
+                
                 /*
                 foreach (string q in ingredients)
                 {
@@ -222,10 +222,10 @@ namespace Recipe_Mk.III
             richTextBoxAmountOut.Text = "";
             richTextBoxUnitsOut.Text = "";
 
-            foreach (int i in devideAmounts)
+            foreach(int i in devideAmounts)
             {
                 int h = i * intOutPeople;
-                multiplyAmounts.Add(Convert.ToString(h));
+                multiplyAmounts.Add(Convert.ToString(h)); 
             }
 
             richTextBoxIngredientOut.Lines = ingredients.ToArray();
@@ -264,11 +264,10 @@ namespace Recipe_Mk.III
         //                devideAmounts.Add(h);
         //            }
         //            break;
-
         //
         //    }
         //}
 
-
+            
     }
 }
