@@ -1,13 +1,6 @@
 ﻿//(C) Copyright Josh Walls 2013-14. All Rights Reserved.
-
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -20,7 +13,7 @@ namespace Recipe_Mk.IV
             InitializeComponent();
         }
 
-        //Program variables
+		//Program variables
         private string strRecipeName;
         private int intPeopleNumber;
         private int intOutPeople;
@@ -28,7 +21,6 @@ namespace Recipe_Mk.IV
         //Variables for whether or not buttons clicked
         bool boolBtnRecipeGoClick;
         bool lootbtnGoClick;
-
 
 	    List<string> ingredients = new List<string>();
         List<int> amounts = new List<int>();
@@ -50,20 +42,14 @@ namespace Recipe_Mk.IV
         }
         private void btnGo_Click(object sender, EventArgs e)
         {
-            
-
-            ingredients.Add(txtIngredients.Text);
+			ingredients.Add(txtIngredients.Text);
             amounts.Add(Convert.ToInt32(numericUpDownAmount.Value));
             units.Add(Convert.ToString(comboBoxUnits.Text));
 
             txtIngredients.Text = "";
             numericUpDownAmount.Value = 1;
             comboBoxUnits.Text = "";
-
-            
         }
-
-                  
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -72,9 +58,8 @@ namespace Recipe_Mk.IV
             save.Filter = "Recipe File | *.recipe";
             if (save.ShowDialog() == DialogResult.OK)
             {
-                StreamWriter writer = new StreamWriter(save.OpenFile());
-
-                
+				StreamWriter writer = new StreamWriter(save.OpenFile());
+      
 #region Old bit
 				/*
                 writer.WriteLine("<?xml version=\"1.0\"?>");
@@ -148,7 +133,6 @@ namespace Recipe_Mk.IV
             units.Clear();
 
             OpenFileDialog open = new OpenFileDialog();
-            //open.ShowDialog();
             open.Filter = "Recipe Files|*.recipe|All Files|*.*";
             open.FilterIndex = 1;
 
@@ -159,8 +143,6 @@ namespace Recipe_Mk.IV
 				string[] allLines = reader.ReadToEnd().Split('\n');
 
 				reader.Close();
-
-
 
 				foreach (string line in allLines)            //not working
 				{
@@ -179,13 +161,11 @@ namespace Recipe_Mk.IV
 				strRecipeName = fileName.Remove(fileName.Length - 7, 7);
 
 				this.Text = strRecipeName;
-
 			}
 			else
 			{
 				return;
 			}
-
 
 #region old bit
 			//hello = reader.ReadLine();
@@ -220,8 +200,6 @@ namespace Recipe_Mk.IV
             Application.Exit();
         }
 
-        
-
         private void btnOutGo_Click(object sender, EventArgs e)
         {
             intOutPeople = Convert.ToInt32(numericUpDownOutPeople.Value);
@@ -241,8 +219,6 @@ namespace Recipe_Mk.IV
             richTextBoxUnitsOut.Lines = units.ToArray();
 
 			btnOutGo.Enabled = false;
-
-		
         }
 
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
@@ -268,7 +244,6 @@ namespace Recipe_Mk.IV
 
                 devideAmounts.Add(h);
             }
-
 			tabControl1.SelectedIndex = 2;
         }
 
@@ -304,10 +279,6 @@ namespace Recipe_Mk.IV
 		private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show("Yeah, no. This bit is just for show.");
-		}
-
-        
-
-            
+		}     
     }
 }
