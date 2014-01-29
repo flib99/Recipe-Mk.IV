@@ -36,8 +36,6 @@ namespace Recipe_Mk.IV
         List<int> devideAmounts = new List<int>();
         List<string> multiplyAmounts = new List<string>();
 
-        
-
         private void btnRecipeGo_Click(object sender, EventArgs e)
         {
             strRecipeName = txtName.Text;
@@ -77,7 +75,8 @@ namespace Recipe_Mk.IV
                 StreamWriter writer = new StreamWriter(save.OpenFile());
 
                 
-                /*
+#region Old bit
+				/*
                 writer.WriteLine("<?xml version=\"1.0\"?>");
                 writer.WriteLine("<ingredients>");
                 foreach (string s in ingredients)
@@ -116,9 +115,10 @@ namespace Recipe_Mk.IV
                 }
                 */
 
-                //writer.Write("//Recipe file. Amounts are per person. [ingredient],[amount],[units]." + "\n");
+				//writer.Write("//Recipe file. Amounts are per person. [ingredient],[amount],[units]." + "\n");
+				#endregion
 
-                for (int i = 0; i < ingredients.Count; i++)
+				for (int i = 0; i < ingredients.Count; i++)
                 {
                     writer.WriteLine("{0},{1},{2}", ingredients[i], devideAmounts[i], units[i]);
                 }
@@ -148,32 +148,47 @@ namespace Recipe_Mk.IV
             units.Clear();
 
             OpenFileDialog open = new OpenFileDialog();
-            open.ShowDialog();
-            open.Filter = "Recipe Files | *.recipe | All Files | *.*";
+            //open.ShowDialog();
+            open.Filter = "Recipe Files|*.recipe|All Files|*.*";
             open.FilterIndex = 1;
 
-            StreamReader reader = new StreamReader(open.FileName);
+			if (open.ShowDialog() == DialogResult.OK)
+			{
+				StreamReader reader = new StreamReader(open.FileName);
 
-            string[] allLines = reader.ReadToEnd().Split('\n');
+				string[] allLines = reader.ReadToEnd().Split('\n');
 
-            reader.Close();
-
-            
-
-            foreach (string line in allLines)            //not working
-            {
-                string[] tokens = line.Split(',');
-                if (tokens[0] != "")
-                {
-                    ingredients.Add(tokens[0]);
-                    multiplyAmounts.Add(tokens[1]);
-                    units.Add(tokens[2]);
-                }                                        //'till here
-            }
+				reader.Close();
 
 
 
-            //hello = reader.ReadLine();
+				foreach (string line in allLines)            //not working
+				{
+					string[] tokens = line.Split(',');
+					if (tokens[0] != "")
+					{
+						ingredients.Add(tokens[0]);
+						multiplyAmounts.Add(tokens[1]);
+						units.Add(tokens[2]);
+					}                                        //'till here
+				}
+
+				tabControl1.SelectedIndex = 2;
+
+				string fileName = Path.GetFileName(open.FileName);
+				strRecipeName = fileName.Remove(fileName.Length - 7, 7);
+
+				this.Text = strRecipeName;
+
+			}
+			else
+			{
+				return;
+			}
+
+
+#region old bit
+			//hello = reader.ReadLine();
             //
             //string[] ingredientsArray = hello.Split(',');
             //
@@ -196,9 +211,9 @@ namespace Recipe_Mk.IV
             //        units.Add(s);
             //        count = 1;
             //    }
-            //}
-
-        }
+			//}
+			#endregion
+		}
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -211,9 +226,9 @@ namespace Recipe_Mk.IV
         {
             intOutPeople = Convert.ToInt32(numericUpDownOutPeople.Value);
 
-            richTextBoxIngredientOut.Text = "";
-            richTextBoxAmountOut.Text = "";
-            richTextBoxUnitsOut.Text = "";
+			richTextBoxIngredientOut.ResetText();
+            richTextBoxAmountOut.ResetText();
+			richTextBoxUnitsOut.ResetText();
 
             foreach(int i in devideAmounts)
             {
@@ -224,21 +239,25 @@ namespace Recipe_Mk.IV
             richTextBoxIngredientOut.Lines = ingredients.ToArray();
             richTextBoxAmountOut.Lines = multiplyAmounts.ToArray();
             richTextBoxUnitsOut.Lines = units.ToArray();
+
+			btnOutGo.Enabled = false;
+
+		
         }
 
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Yeah, no. This bit doesn't work yet.");
+			MessageBox.Show("Yeah, no. This bit is just for show.");
         }
 
         private void formatToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Yeah, no. This bit doesn't work yet.");
+			MessageBox.Show("Yeah, no. This bit is just for show.");
         }
 
         private void toolsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Yeah, no. This bit doesn't work yet.");
+			MessageBox.Show("Yeah, no. This bit is just for show.");
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -249,6 +268,8 @@ namespace Recipe_Mk.IV
 
                 devideAmounts.Add(h);
             }
+
+			tabControl1.SelectedIndex = 2;
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -264,6 +285,26 @@ namespace Recipe_Mk.IV
             MessageBox.Show("How do you think I found out how to do it?");
             MessageBox.Show("Stop being lazy.");
         }
+
+		private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("Yeah, no. This bit is just for show.");
+		}
+
+		private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("Yeah, no. This bit is just for show.");
+		}
+
+		private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("Yeah, no. This bit is just for show.");
+		}
+
+		private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("Yeah, no. This bit is just for show.");
+		}
 
         
 
